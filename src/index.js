@@ -3,12 +3,11 @@ var path = require('path');
 var vm = require('vm');
 var context_ = require('./context');
 
-module.exports = function (file, options) {
-  var baseDir = options.baseDir || (path.dirname(file) + "/")
+module.exports = function (template, options) {
 
   var context = context_.getContext({
     // handlebars template to compile
-    template: fs.readFileSync(file, 'utf8'),
+    template: template,
 
     // compiled handlebars template
     templatejs: null
@@ -17,15 +16,8 @@ module.exports = function (file, options) {
   // compile the handlebars template inside the vm context
   vm.runInContext('templatejs = Ember.Handlebars.precompile(template).toString()', context)
 
-  // extract the compiled template from the vm context and return it,
-  // adding template to Ember.TEMPLATES when it is required
-  var fileName = file.replace(baseDir, '')
-  var templateName = fileName.replace(/\.(handlebars|hbs)$/, '').replace(/\./g, '/')
-  var namedTemplateJs = 'Ember.TEMPLATES["' +
-    templateName +
-    '"] = Ember.Handlebars.template(' + context.templatejs + ');'
-
-  return namedTemplateJs;
+  // extract the compiled template from the vm context and return it
+  return context.templatejs;
 }
 
 module.exports.context = context_;
