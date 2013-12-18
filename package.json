@@ -22,10 +22,10 @@
 
     "repository" : {
         "type" : "git",
-        "url" : "http://github.com/cinch-financial/node-embler-precompile"
+        "url" : "http://github.com/cinch-financial/node-emblem-precompile"
     },
 
-    "author" : "Gabriel Grant <g@briel.ca>"
+    "author" : "Gabriel Grant <g@briel.ca>",
 
     "contributors" : [{
         "name": "Jeff Dean",
