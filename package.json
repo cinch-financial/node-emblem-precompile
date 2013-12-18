@@ -1,7 +1,7 @@
 {
-    "name" : "ember-precompile",
+    "name" : "emblem-precompile",
     "version" : "0.2.3",
-    "description" : "Precompile Ember.js templates with a Handlebars-like UI",
+    "description" : "Precompile Emblem.js templates with a Handlebars-like UI",
     "main" : "./src/index.js",
 
     "keywords" : [
@@ -22,11 +22,11 @@
 
     "repository" : {
         "type" : "git",
-        "url" : "http://github.com/gabrielgrant/node-ember-precompile"
+        "url" : "http://github.com/cinch-financial/node-embler-precompile"
     },
 
-    "author" : "Gabriel Grant <g@briel.ca>",
-    
+    "author" : "Gabriel Grant <g@briel.ca>", "jgoldbeck"
+
     "contributors" : [{
         "name": "Jeff Dean",
         "email": "jeff@zilkey.com"
