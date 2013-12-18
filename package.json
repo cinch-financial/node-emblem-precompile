@@ -25,7 +25,7 @@
         "url" : "http://github.com/cinch-financial/node-embler-precompile"
     },
 
-    "author" : "Gabriel Grant <g@briel.ca>", "jgoldbeck"
+    "author" : "Gabriel Grant <g@briel.ca>"
 
     "contributors" : [{
         "name": "Jeff Dean",
