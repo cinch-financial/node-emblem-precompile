@@ -14,7 +14,7 @@ module.exports = function (template, options) {
   });
 
   // compile the handlebars template inside the vm context
-  vm.runInContext('templatejs = Ember.Handlebars.precompile(template).toString()', context)
+  vm.runInContext('templatejs = Emblem.precompile(Ember.Handlebars, template).toString()', context)
 
   // extract the compiled template from the vm context and return it
   return context.templatejs;

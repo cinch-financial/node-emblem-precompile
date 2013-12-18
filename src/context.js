@@ -6,6 +6,7 @@ var fs = require('fs');
 var vm = require('vm');
 
 var HANDLEBARSJS = fs.readFileSync(__dirname + '/../vendor/handlebars-1.0.0.js', 'utf8')
+var EMBLEMJS = fs.readFileSync(__dirname + '/../vendor/emblem-0.3.5.js', 'utf8')
 var EMBERJS = fs.readFileSync(__dirname + '/../vendor/ember-1.0.0-rc.7.js', 'utf8')
 
 function getBaseSandbox() {
@@ -59,12 +60,13 @@ function getContext(sandboxExtras){
   for (var attrname in sandboxExtras){
     sandbox[attrname] = sandboxExtras[attrname];
   }
-  
+
   // create a context for the vm using the sandbox data
   var context = vm.createContext(sandbox)
 
   // load Handlebars and Ember into the sandbox
   vm.runInContext(HANDLEBARSJS, context, 'handlebars.js')
+  vm.runInContext(EMBLEMJS, context, 'emblem.js')
   vm.runInContext(EMBERJS, context, 'ember.js')
   return context;
 }
