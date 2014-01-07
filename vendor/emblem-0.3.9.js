@@ -97,7 +97,7 @@ if (typeof window !== "undefined" && window !== null) {
 }
 
 },{"./emblem":3}],3:[function(require,module,exports){
-var global=self;var Emblem;
+var global={};var Emblem;
 
 this.Emblem = {};
 
@@ -199,7 +199,7 @@ Emblem.Parser = (function() {
         peg$c0 = null,
         peg$c1 = "",
         peg$c2 = function(c) {return c;},
-        peg$c3 = function(c, i) { 
+        peg$c3 = function(c, i) {
           return createProgramNode(c, i || []);
         },
         peg$c4 = "=",
@@ -224,7 +224,7 @@ Emblem.Parser = (function() {
                   buffer.push(node.string);
                 }
                 continue;
-              } 
+              }
 
               // Flush content if present.
               if(buffer.length) {
@@ -235,8 +235,8 @@ Emblem.Parser = (function() {
             }
           }
 
-          if(buffer.length) { 
-            compressedStatements.push(new AST.ContentNode(buffer.join(''))); 
+          if(buffer.length) {
+            compressedStatements.push(new AST.ContentNode(buffer.join('')));
           }
 
           return compressedStatements;
@@ -246,14 +246,14 @@ Emblem.Parser = (function() {
         peg$c12 = function() { return []; },
         peg$c13 = ">",
         peg$c14 = "\">\"",
-        peg$c15 = function(n, params) { 
-          return [new AST.PartialNode(n, params[0])]; 
+        peg$c15 = function(n, params) {
+          return [new AST.PartialNode(n, params[0])];
         },
         peg$c16 = /^[a-zA-Z0-9_$-\/]/,
         peg$c17 = "[a-zA-Z0-9_$-\\/]",
         peg$c18 = function(s) { return new AST.PartialNameNode(new AST.StringNode(s)); },
-        peg$c19 = function(m) { 
-          return [m]; 
+        peg$c19 = function(m) {
+          return [m];
         },
         peg$c20 = "/",
         peg$c21 = "\"/\"",
@@ -305,7 +305,7 @@ Emblem.Parser = (function() {
 
           return ret;
         },
-        peg$c31 = function(mustacheNode, nestedContentProgramNode) { 
+        peg$c31 = function(mustacheNode, nestedContentProgramNode) {
           if (!nestedContentProgramNode) { return mustacheNode; }
 
           var close = mustacheNode.id;
@@ -330,7 +330,7 @@ Emblem.Parser = (function() {
           mustache.escaped = e;
           return ret;
         },
-        peg$c37 = function(isPartial, path, params, hash) { 
+        peg$c37 = function(isPartial, path, params, hash) {
           if(isPartial) {
             var n = new AST.PartialNameNode(new AST.StringNode(path.string));
             return new AST.PartialNode(n, params[0]);
@@ -410,7 +410,7 @@ Emblem.Parser = (function() {
         peg$c61 = "PathSeparator",
         peg$c62 = /^[\/.]/,
         peg$c63 = "[\\/.]",
-        peg$c64 = function(v) { 
+        peg$c64 = function(v) {
           var last = v[v.length - 1];
           var match;
           var suffixModifier;
@@ -419,7 +419,7 @@ Emblem.Parser = (function() {
             last.part = last.part.slice(0, -1);
           }
 
-          var idNode = new AST.IdNode(v); 
+          var idNode = new AST.IdNode(v);
           idNode._emblemSuffixModifier = suffixModifier;
 
           return idNode;
@@ -457,14 +457,14 @@ Emblem.Parser = (function() {
             nodes = nodes.concat(w[i]);
             nodes.push("\n");
           }
-          return nodes; 
+          return nodes;
         },
         peg$c91 = /^[|`']/,
         peg$c92 = "[|`']",
         peg$c93 = "<",
         peg$c94 = "\"<\"",
         peg$c95 = function() { return '<'; },
-        peg$c96 = function(s, nodes, indentedNodes) { 
+        peg$c96 = function(s, nodes, indentedNodes) {
           if(nodes.length || !indentedNodes) {
             nodes.push("\n");
           }
@@ -583,17 +583,17 @@ Emblem.Parser = (function() {
             tagOpenContent.push(new AST.ContentNode(' '));
             tagOpenContent.push(inTagMustaches[i]);
           }
-          
+
           for(var i = 0; i < fullAttributes.length; ++i) {
             for (var i2 in fullAttributes[i]) {
               if (fullAttributes[i][i2] instanceof AST.MustacheNode) {
                 updateMustacheNode(fullAttributes[i][i2]);
               }
             }
-            
+
             if (classes.length) {
               var isClassAttr = fullAttributes[i][1] && fullAttributes[i][1].string === 'class="';
-          
+
               // Check if attribute is class attribute and has content
               if (isClassAttr && fullAttributes[i].length === 4) {
                 if (fullAttributes[i][2].type == 'mustache') {
@@ -605,18 +605,18 @@ Emblem.Parser = (function() {
                   hash = new AST.HashNode([
                       ['class', new AST.StringNode(classesContent)]
                   ]);
-                  
+
                   params = [new AST.IdNode([{ part: 'bind-attr'}])].concat(mustacheNode.params);
                   fullAttributes[i] = [fullAttributes[i][0], createMustacheNode(params, hash, true)];
                 } else {
-                  // Else prepend shorthand classes to attribute 
+                  // Else prepend shorthand classes to attribute
                   classes.push(fullAttributes[i][2].string);
                   fullAttributes[i][2].string = classes.join(' ');
                 }
                 classes = [];
               }
             }
-            
+
             tagOpenContent = tagOpenContent.concat(fullAttributes[i]);
           }
 
@@ -650,7 +650,7 @@ Emblem.Parser = (function() {
         },
         peg$c137 = function(a) {
           if (a.length) {
-            return [new AST.ContentNode(' ')].concat(a); 
+            return [new AST.ContentNode(' ')].concat(a);
           } else {
             return [];
           }
@@ -662,7 +662,7 @@ Emblem.Parser = (function() {
           // Unshift the action helper and augment the hash
           return [unshiftParam(mustacheNode, 'action', [['on', new AST.StringNode(event)]])];
         },
-        peg$c142 = function(key, boolValue) { 
+        peg$c142 = function(key, boolValue) {
           if (boolValue === 'true') {
             return [ new AST.ContentNode(key) ];
           } else {
@@ -673,14 +673,14 @@ Emblem.Parser = (function() {
         peg$c144 = "!",
         peg$c145 = "\"!\"",
         peg$c146 = function(key, value) { return IS_EMBER; },
-        peg$c147 = function(key, value) { 
+        peg$c147 = function(key, value) {
           var hashNode = new AST.HashNode([[key, new AST.StringNode(value)]]);
           var params = [new AST.IdNode([{part: 'bind-attr'}])];
           var mustacheNode = createMustacheNode(params, hashNode);
 
           return [mustacheNode];
         },
-        peg$c148 = function(key, id) { 
+        peg$c148 = function(key, id) {
           var mustacheNode = createMustacheNode([id], null, true);
 
           if(IS_EMBER && id._emblemSuffixModifier === '!') {
@@ -693,7 +693,7 @@ Emblem.Parser = (function() {
             new AST.ContentNode('"'),
           ];
         },
-        peg$c149 = function(key, nodes) { 
+        peg$c149 = function(key, nodes) {
           var result = [ new AST.ContentNode(key + '=' + '"') ].concat(nodes);
           return result.concat([new AST.ContentNode('"')]);
         },
@@ -5771,41 +5771,41 @@ Emblem.Parser = (function() {
         wbr: true
       };
 
-      var KNOWN_TAGS = { 
-        figcaption: true, blockquote: true, plaintext: true, textarea: true, progress: true, 
-        optgroup: true, noscript: true, noframes: true, frameset: true, fieldset: true, 
-        datalist: true, colgroup: true, basefont: true, summary: true, section: true, 
-        marquee: true, listing: true, isindex: true, details: true, command: true, 
-        caption: true, bgsound: true, article: true, address: true, acronym: true, 
-        strong: true, strike: true, spacer: true, source: true, select: true, 
-        script: true, output: true, option: true, object: true, legend: true, 
-        keygen: true, iframe: true, hgroup: true, header: true, footer: true, 
-        figure: true, center: true, canvas: true, button: true, applet: true, video: true, 
-        track: true, title: true, thead: true, tfoot: true, tbody: true, table: true, 
-        style: true, small: true, param: true, meter: true, label: true, input: true, 
-        frame: true, embed: true, blink: true, audio: true, aside: true, time: true, 
-        span: true, samp: true, ruby: true, nobr: true, meta: true, menu: true, 
-        mark: true, main: true, link: true, html: true, head: true, form: true, 
-        font: true, data: true, code: true, cite: true, body: true, base: true, 
-        area: true, abbr: true, xmp: true, wbr: true, 'var': true, sup: true, 
-        sub: true, pre: true, nav: true, map: true, kbd: true, ins: true, 
-        img: true, div: true, dir: true, dfn: true, del: true, col: true, 
-        big: true, bdo: true, bdi: true, ul: true, tt: true, tr: true, th: true, td: true, 
-        rt: true, rp: true, ol: true, li: true, hr: true, h6: true, h5: true, h4: true, 
-        h3: true, h2: true, h1: true, em: true, dt: true, dl: true, dd: true, br: true, 
+      var KNOWN_TAGS = {
+        figcaption: true, blockquote: true, plaintext: true, textarea: true, progress: true,
+        optgroup: true, noscript: true, noframes: true, frameset: true, fieldset: true,
+        datalist: true, colgroup: true, basefont: true, summary: true, section: true,
+        marquee: true, listing: true, isindex: true, details: true, command: true,
+        caption: true, bgsound: true, article: true, address: true, acronym: true,
+        strong: true, strike: true, spacer: true, source: true, select: true,
+        script: true, output: true, option: true, object: true, legend: true,
+        keygen: true, iframe: true, hgroup: true, header: true, footer: true,
+        figure: true, center: true, canvas: true, button: true, applet: true, video: true,
+        track: true, title: true, thead: true, tfoot: true, tbody: true, table: true,
+        style: true, small: true, param: true, meter: true, label: true, input: true,
+        frame: true, embed: true, blink: true, audio: true, aside: true, time: true,
+        span: true, samp: true, ruby: true, nobr: true, meta: true, menu: true,
+        mark: true, main: true, link: true, html: true, head: true, form: true,
+        font: true, data: true, code: true, cite: true, body: true, base: true,
+        area: true, abbr: true, xmp: true, wbr: true, 'var': true, sup: true,
+        sub: true, pre: true, nav: true, map: true, kbd: true, ins: true,
+        img: true, div: true, dir: true, dfn: true, del: true, col: true,
+        big: true, bdo: true, bdi: true, ul: true, tt: true, tr: true, th: true, td: true,
+        rt: true, rp: true, ol: true, li: true, hr: true, h6: true, h5: true, h4: true,
+        h3: true, h2: true, h1: true, em: true, dt: true, dl: true, dd: true, br: true,
         u: true, s: true, q: true, p: true, i: true, b: true, a: true
       };
 
       var KNOWN_EVENTS = {
-        "touchStart": true, "touchMove": true, "touchEnd": true, "touchCancel": true, 
-        "keyDown": true, "keyUp": true, "keyPress": true, "mouseDown": true, "mouseUp": true, 
-        "contextMenu": true, "click": true, "doubleClick": true, "mouseMove": true, 
-        "focusIn": true, "focusOut": true, "mouseEnter": true, "mouseLeave": true, 
-        "submit": true, "input": true, "change": true, "dragStart": true, 
-        "drag": true, "dragEnter": true, "dragLeave": true, 
+        "touchStart": true, "touchMove": true, "touchEnd": true, "touchCancel": true,
+        "keyDown": true, "keyUp": true, "keyPress": true, "mouseDown": true, "mouseUp": true,
+        "contextMenu": true, "click": true, "doubleClick": true, "mouseMove": true,
+        "focusIn": true, "focusOut": true, "mouseEnter": true, "mouseLeave": true,
+        "submit": true, "input": true, "change": true, "dragStart": true,
+        "drag": true, "dragEnter": true, "dragLeave": true,
         "dragOver": true, "drop": true, "dragEnd": true
       };
-      
+
       // Ridiculous that we have to do this, but PEG doesn't
       // support unmatched closing braces in JS code,
       // so we have to construct.
@@ -5853,7 +5853,7 @@ Emblem.Parser = (function() {
 
       function textNodesResult(first, tail) {
         var ret = [];
-        if(first) { ret.push(first); } 
+        if(first) { ret.push(first); }
         for(var i = 0; i < tail.length; ++i) {
           var t = tail[i];
           ret.push(t[0]);
