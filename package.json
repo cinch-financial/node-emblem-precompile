@@ -11,8 +11,8 @@
     ],
 
     "bin": {
-        "ember-precompile": "./bin/ember-precompile",
-        "ember-render": "./bin/ember-render"
+        "emblem-precompile": "./bin/emblem-precompile",
+        "emblem-render": "./bin/emblem-render"
     },
 
     "dependencies": {

@@ -3,7 +3,7 @@
 var fs = require('fs');
 var argv = require('optimist').argv;
 
-var compileEmberTemplate = require('ember-precompile');
+var compileEmberTemplate = require('emblem-precompile');
 
 var usage = '\n  \
 Precompile handlebar templates for Ember.js.\n  \
