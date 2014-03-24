@@ -1,6 +1,6 @@
 {
     "name" : "emblem-precompile",
-    "version" : "1.4.0",
+    "version" : "1.4.1",
     "description" : "Precompile Emblem.js templates with a Handlebars-like UI",
     "main" : "./src/index.js",
 
