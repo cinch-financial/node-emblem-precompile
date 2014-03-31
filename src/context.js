@@ -5,9 +5,9 @@
 var fs = require('fs');
 var vm = require('vm');
 
-var HANDLEBARSJS = fs.readFileSync(__dirname + '/../vendor/handlebars-1.3.0.js', 'utf8')
-var EMBLEMJS = fs.readFileSync(__dirname + '/../vendor/emblem-0.3.12.js', 'utf8')
-var EMBERJS = fs.readFileSync(__dirname + '/../vendor/ember-1.4.0.js', 'utf8')
+var HANDLEBARSJS = fs.readFileSync(__dirname + '/../vendor/handlebars.js', 'utf8')
+var EMBLEMJS = fs.readFileSync(__dirname + '/../vendor/emblem-0.3.13.js', 'utf8')
+var EMBERJS = fs.readFileSync(__dirname + '/../vendor/ember.js', 'utf8')
 
 function getBaseSandbox() {
 
