@@ -39776,7 +39776,7 @@ Ember.HistoryLocation = Ember.Object.extend({
       // The stock browser on Android 2.2 & 2.3 returns positive on history support
       // Unfortunately support is really buggy and there is no clean way to detect
       // these bugs, so we fall back to a user agent sniff :(
-      var userAgent = window.navigator.userAgent;
+      var userAgent = [];
 
       // We only want Android 2, stock browser, and not Chrome which identifies
       // itself as 'Mobile Safari' as well
