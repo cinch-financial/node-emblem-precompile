@@ -6,7 +6,10 @@
 // - rendering compiled template
 
 context_ = require('./context');
-var jQuery = require('jquery');
+
+var fs = require('fs');
+var jQuery = fs.readFileSync(__dirname + '/../vendor/jquery.js', 'utf8')
+
 var vm = require('vm');
 
 module.exports = {

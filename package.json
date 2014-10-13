@@ -1,6 +1,6 @@
 {
     "name" : "emblem-precompile",
-    "version" : "1.6.0",
+    "version" : "1.6.2",
     "description" : "Precompile Emblem.js templates with a Handlebars-like UI",
     "main" : "./src/index.js",
 
@@ -16,8 +16,7 @@
     },
 
     "dependencies": {
-        "optimist": "0.3.4",
-       "jquery": "1.8.x"
+        "optimist": "0.3.4"
     },
 
     "repository" : {
