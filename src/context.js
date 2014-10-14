@@ -6,7 +6,7 @@ var fs = require('fs');
 var vm = require('vm');
 
 var HANDLEBARSJS = fs.readFileSync(__dirname + '/../vendor/handlebars.js', 'utf8')
-var EMBLEMJS = fs.readFileSync(__dirname + '/../vendor/emblem-0.3.16.js', 'utf8')
+var EMBLEMJS = fs.readFileSync(__dirname + '/../vendor/emblem-0.3.18.js', 'utf8')
 var EMBERJS = fs.readFileSync(__dirname + '/../vendor/ember.js', 'utf8')
 
 function getBaseSandbox() {
