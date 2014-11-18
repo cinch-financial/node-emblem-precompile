@@ -26,23 +26,53 @@ function getBaseSandbox() {
     setAttribute: function() { return element },
     appendChild: function() { return element },
     innerHTML: '<input name="foo">',
+    cloneNode:  function() { return element },
     // needed for "movesWhitespace()" test
-    childNodes: [
-      {nodeValue: 'Test: '},
-      {nodeValue: ''},
-      {nodeValue: 'Value'}
+    nodeValue: 'Banana',
+    getAttribute: function() {return false}
+  }
+
+  element.childNodes =
+    [
+      element,
+      element,
+      element
     ]
+
+  var textNode = {
+    wholeText : function () { return textNode },
+    nextElementSibling : function () { return textNode },
+    previousElementSibling : function () { return textNode },
+    length : function () { return textNode },
+    data : function () { return textNode },
+    parentElement :function () { return textNode },
+    textContent :function () { return textNode },
+    baseURI :function () { return textNode },
+    localName :function () { return textNode },
+    namespaceURI :function () { return textNode },
+    ownerDocument :function () { return textNode },
+    nextSibling :function () { return textNode },
+    previousSibling :function () { return textNode },
+    lastChild : function () { return textNode },
+    firstChild : function () { return textNode },
+    childNodes : function () { return [textNode] },
+    parentNode :  function () { return textNode }
   }
 
   var sandbox = {
     // DOM
     document: {
       createRange: false,
-      createElement: function () { return element }
+      createElement: function () { return element },
+      createTextNode: function () { return textNode }
     },
 
     // Console
     console: console,
+
+    navigator: {
+      userAgent: 'monkeys'
+    },
 
     // jQuery
     jQuery: jQuery,
