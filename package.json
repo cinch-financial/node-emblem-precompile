@@ -1,6 +1,6 @@
 {
     "name" : "emblem-precompile",
-    "version" : "1.8.1",
+    "version" : "1.8.2",
     "description" : "Precompile Emblem.js templates with a Handlebars-like UI",
     "main" : "./src/index.js",
 
@@ -24,9 +24,12 @@
         "url" : "http://github.com/cinch-financial/node-emblem-precompile"
     },
 
-    "author" : "Gabriel Grant <g@briel.ca>",
+    "author" : "Joseph Goldbeck",
 
     "contributors" : [{
+        "name": "Gabriel Grant",
+        "email": "<g@briel.ca>"
+    },{
         "name": "Jeff Dean",
         "email": "jeff@zilkey.com"
     }, {
